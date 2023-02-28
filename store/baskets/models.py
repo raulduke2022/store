@@ -8,8 +8,14 @@ class Basket(models.Model):
     products = models.ManyToManyField(Product)
     created = models.DateTimeField(auto_now_add=True)
 
+
     # def count_products(self):
     #     return self.products.all().count()
 
+
+class CartProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
 
 
